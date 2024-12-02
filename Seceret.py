@@ -5,56 +5,56 @@ from colorama import Fore, Style, init
 # Initialize colorama
 init(autoreset=True)
 
-# Punisher Skull with Sword ASCII Art
-punisher_art = """
-       ______
-    .-        -. 
-   /            \\  
-  |,  .-.  .-.  ,|  
-  | )(_o/  \\o_)( |  
-  |/     /\\     \\|  
-   (_    ^^    _)  
-    \\__|IIIIII|__/  
-     | \\IIIIII/ |  
-     \\          /  
-      `--------` 
-       // || \\\\
-      //  ||  \\\\
-     ||   ||   ||
-     ||   ||   ||
-      \\\\  ||  //
-       \\\\ || //
-         ||||
-         ||||
+# Birthday Cake ASCII Art
+cake_art = """
+         ,   ,   ,
+       , |_,_|_,_| ,  
+       |   Happy    |
+   ,   |   Birthday  |   ,
+   | |_|_,_|_,_|_,_|_| |
+   |   ,   ,   ,   ,   |
+   |_|_|_|_|_|_|_|_|_|_|
+   |   ,   ,   ,   ,   |
+   | |_|_,_|_,_|_,_|_| |
+   |___________________|
 """
 
-# Text Animation Function
-def animate_text(text, delay=0.2):
-    for char in text:
-        print(char, end="", flush=True)
-        time.sleep(delay)
-    print()
+# Compact ASCII Art for "HAPPY BIRTHDAY MIDHUN"
+ascii_text = """
+H A P P Y   B I R T H D A Y
+        M I D H U N
+"""
+
+# Colors to cycle through
+colors = [Fore.RED, Fore.GREEN, Fore.BLUE, Fore.CYAN, Fore.YELLOW, Fore.MAGENTA]
+
+# Multi-Color Flashing Effect for Cake and Text
+def multi_color_flash(cake, text, duration=20, delay=0.2):
+    start_time = time.time()
+    while time.time() - start_time < duration:
+        for color in colors:
+            os.system("clear")
+            print(color + Style.BRIGHT + cake)  # Flashing cake
+            print(color + Style.BRIGHT + text)  # Flashing text
+            time.sleep(delay)
 
 # Main function to display the program
 def birthday_program():
     os.system("clear")
-    print(Fore.RED + Style.BRIGHT + punisher_art)  # Punisher art in red
-    colors = [Fore.RED, Fore.GREEN, Fore.BLUE, Fore.CYAN, Fore.MAGENTA, Fore.YELLOW]
     
-    # Multi-color light effect
-    for _ in range(5):  # Loop for light effect
-        for color in colors:
-            os.system("clear")
-            print(color + Style.BRIGHT + punisher_art)  # Flashing skull
-            time.sleep(0.1)
+    # Flashing multi-color cake and ASCII art for 20 seconds
+    multi_color_flash(cake_art, ascii_text, duration=20, delay=0.2)
     
-    # Display birthday message
+    # Final birthday message
     os.system("clear")
-    animate_text(Fore.YELLOW + "HAPPY BIRTHDAY TO THE UNSTOPPABLE", 0.1)
-    animate_text(Fore.CYAN + "MIDHUN", 0.2)
-    animate_text(Fore.GREEN + "EMBRACE YOUR INNER PUNISHER!", 0.1)
-    print(Fore.RED + Style.BRIGHT + punisher_art)
+    print(Fore.MAGENTA + Style.BRIGHT + cake_art)
+    print(Fore.CYAN + Style.BRIGHT + ascii_text)
+    time.sleep(1)
+    print(Fore.YELLOW + Style.BRIGHT + "HAPPY BIRTHDAY  MACHA MIDHUN!")
+    time.sleep(1)
+    print(Fore.GREEN + Style.BRIGHT + "ATHA MIND BIRTHDAY MIND EH")
 
 # Run the program
 if __name__ == "__main__":
     birthday_program()
+
